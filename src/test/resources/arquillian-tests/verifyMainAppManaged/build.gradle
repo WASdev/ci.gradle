@@ -20,7 +20,10 @@ dependencies {
 }
 
 task configArq (type:ConfigureArquillianTask) {
-    arquillianProperties = ['verifyApps': 'arquillian-tests']
+    arquillianProperties = [
+        'verifyApps': 'arquillian-tests',
+        'standardFileDeleteRetryInterval': '500'
+    ]
     dependsOn 'deleteArquillianXml'
     doFirst {
         server = rootProject.liberty.server

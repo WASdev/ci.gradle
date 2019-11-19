@@ -34,7 +34,10 @@ liberty{
 }
 
 arquillianConfiguration {
-    arquillianProperties = ['verifyApps': 'arquillian-tests']
+    arquillianProperties = [
+        'verifyApps': 'arquillian-tests',
+        'standardFileDeleteRetryInterval': '500'
+    ]
     skipIfArquillianXmlExists = true
 }
 

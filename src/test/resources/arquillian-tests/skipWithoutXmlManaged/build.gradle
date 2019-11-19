@@ -21,6 +21,7 @@ dependencies {
 
 task configArq (type:ConfigureArquillianTask) {
     skipIfArquillianXmlExists = true
+    arquillianProperties = ['standardFileDeleteRetryInterval': '500']
     dependsOn 'deleteArquillianXml'
     doFirst {
         server = rootProject.liberty.server
