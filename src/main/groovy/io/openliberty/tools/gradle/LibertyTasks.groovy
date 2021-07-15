@@ -48,9 +48,9 @@ public class LibertyTasks {
         }
 
         project.libertyCreate {
-            dependsOn 'installLiberty'
+            dependsOn 'installLiberty'   
             // Run install features if configured
-            finalizedBy 'installFeature'
+            finalizedBy 'installFeature'      
         }
 
         project.libertyStart {
@@ -71,11 +71,18 @@ public class LibertyTasks {
 
         project.installFeature {
             dependsOn 'libertyCreate'
+			if (project.configurations.featuresBom.dependencies) {
+				dependsOn 'prepareFeature'
+			}
         }
 
         project.cleanDirs {
             dependsOn 'libertyStop'
         }
+		
+		project.prepareFeature {
+			dependsOn 'installLiberty'		
+		}
 
         project.deploy {
             if (AbstractServerTask.findSpringBootVersion(project) != null) {

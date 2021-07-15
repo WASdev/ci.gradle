@@ -1,5 +1,5 @@
 /**
- * (C) Copyright IBM Corporation 2014, 2020.
+ * (C) Copyright IBM Corporation 2014, 2021.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,6 +43,7 @@ class Liberty implements Plugin<Project> {
         project.configurations.create('libertyLicense')
         project.configurations.create('libertyRuntime')
         project.configurations.create('libertyFeature')
+		project.configurations.create('featuresBom')
         project.configurations.create('libertyApp')
         if (project.configurations.find { it.name == 'compileOnly' }) {
             project.configurations.libertyFeature.extendsFrom(project.configurations.compileOnly)
